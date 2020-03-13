@@ -1,0 +1,14 @@
+# TODO: Complete Col Pull Function in order to get all data at whatever specified col#
+def Pull_Tuple_Info(sheet,col_index):
+
+    row_vals = []
+    for row_index in range(2, sheet.nrows):                 # starts at 2 due to the labels present for the first 2 rows
+        cell_obj = sheet.cell(row_index, col_index)
+        #cell_type_str = ctype_text.get(cell_obj.ctype, 'unknown type')
+        #print('(row %s) %s ' % (row_index, cell_obj.value))
+        if cell_obj.value == '':                            # Used to ignore empty cells during data pull
+            row_index = row_index + 1                       # Moves one row down if current row is null or ''
+        else:
+            row_vals.append(cell_obj.value)
+        #print(row_vals)
+    return row_vals
